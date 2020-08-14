@@ -39,5 +39,41 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        # ITERATIVE APPROACH
+        # Handle an emtpy list
+        # if not self.head and not prev:
+        #     return None
+        # else:
+        #     # Define the previous node we need to access
+        #     prev = None
+        #     # Define the *initial* current node
+        #     current = node
+
+        #     # Handle all other scenarios
+        #     while current is not None:
+        #         # Store the next node's information so we don't lose it when we reassign the node direction
+        #         actual_next = current.next_node
+        #         # reassign the previous node to the current next node
+        #         # we're reversing arrow direction
+        #         current.next_node = prev
+        #         # set the new current to the previous node 
+        #         prev = current
+        #         # set the original next node as the current node we're working on 
+        #         current = actual_next
+        #         # go back up and do the same 
+            
+        # return self.head
+
+        # RECURSIVE APPROACH
+        # If the node doesn't exist/is None
+        if node is None:
+            self.head = prev
+        # Otherwise node exists and is not None
+        else:
+            # Store the next node's information so we don't lose it when we reassign the node direction
+            actual_next = node.next_node
+            # Set the new current node to the previous node
+            node.set_next(prev)
+            # Use recursion using the next node and current node 
+            return self.reverse_list(actual_next, node)
 
